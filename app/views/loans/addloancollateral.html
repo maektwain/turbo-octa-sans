@@ -1,0 +1,106 @@
+<div ng-controller="AddLoanCollateralController">
+    <div>
+        <ul class="breadcrumb">
+            <li><a href="#/viewloanaccount/{{loanId}}">{{'label.anchor.viewloanaccount' | translate}}</a></li>
+            <li class="active">{{'label.anchor.addloancollateral' | translate}}</li>
+        </ul>
+    </div>
+    <form class="form-horizontal well" ng-submit="submit()">
+        <api-validate></api-validate>
+        <fieldset>
+            <legend>{{ 'label.heading.addloancollateral' | translate }}</legend>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="collateralTypeId">{{ 'label.input.collateraltype' | translate }}<span
+                        class="required">*</span></label>
+
+                <div class="col-sm-3">
+                    <select id="collateralTypeId" ng-model="formData.collateralTypeId" class="form-control"
+                            ng-options="collateralType.id as collateralType.name for collateralType in collateralTypes"
+                            value="{{collateralType.id}}"></select>
+                </div>
+
+              </div>
+              <div ng-switch on="formData.collateralTypeId">
+                <div ng-switch-when="69">
+
+                  <div class="form-group">
+                      <label class="control-label col-sm-2" for="goldfineTypeId">{{ 'GoldFine' | translate }}<span
+                              class="required">*</span></label>
+
+                      <div class="col-sm-3">
+                          <select id="goldfineTypeId" ng-model="formData.goldfineTypeId" class="form-control"
+                                  ng-options="goldfineType.id as goldfineType.name for goldfineType in goldfineTypes"
+                                  value="{{goldfineType.id}}"></select>
+                      </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="jewelleryTypeId">{{ 'Jewellery Type' | translate }}<span
+                                class="required">*</span></label>
+
+                        <div class="col-sm-3">
+                            <select id="jewelleryTypeId" ng-model="formData.jewelleryTypeId" class="form-control"
+                                    ng-options="jewelleryType.id as jewelleryType.name for jewelleryType in jewelleryTypes"
+                                    value="{{jewelleryType.id}}"></select>
+                        </div>
+
+                      </div>
+                      <div class="form-group">
+                          <label class="control-label col-sm-2" for="gross">{{ 'Gross' | translate }}</label>
+
+                          <div class="col-sm-3">
+                              <input id="value" type="text" class="form-control" ng-model="formData.gross">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="control-label col-sm-2" for="impurity">{{ 'Impurity' | translate }}</label>
+
+                          <div class="col-sm-3">
+                              <input id="value" type="text" class="form-control" ng-model="formData.impurity">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="control-label col-sm-2" for="value">{{ 'Net W' | translate }}</label>
+
+                          <div class="col-sm-3">
+                              <input id="value" type="text" class="form-control" ng-model="formData.net">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="control-label col-sm-2" for="stone">{{ 'Stone W' | translate }}</label>
+
+                          <div class="col-sm-3">
+                              <input id="value" type="text" class="form-control" ng-model="formData.stone">
+                          </div>
+                      </div>
+
+
+                </div>
+                <div ng-switch-when="70">
+                Some other element
+                </div>
+                          <div class="form-group">
+                <label class="control-label col-sm-2" for="value">{{ 'label.input.value' | translate }}</label>
+
+                <div class="col-sm-3">
+                    <input id="value" type="text" class="form-control" ng-model="formData.value">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="description">{{ 'label.input.description' | translate }}</label>
+
+                <div class="col-sm-3">
+                    <textarea id="description" class="form-control" ng-model="formData.description" rows="4" cols=""></textarea>
+                </div>
+            </div>
+            <div class="col-md-offset-3">
+                <button id="cancel" type="reset" class="btn btn-default" ng-click="cancel()">{{ 'label.button.cancel' | translate
+                    }}
+                </button>
+                <button id="save" type="submit" has-permission='CREATE_COLLATERAL' class="btn btn-primary">{{ 'label.button.save' | translate }}</button>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
